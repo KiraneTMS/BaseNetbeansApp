@@ -28,6 +28,8 @@ public class MainMenu extends javax.swing.JFrame {
     ImageIcon bg = new ImageIcon(getClass().getResource("/Src/Form/Netbean W Form.jpg"));
     String menu1_status = "closed";   
     String menu2_status = "closed";
+    String toolbar_lock = "false";
+    ImageIcon lock_toogle = new ImageIcon(getClass().getResource("/Src/Images/Icons/unlock.png"));
     int xmouse;
     int ymouse;
     
@@ -57,6 +59,8 @@ public class MainMenu extends javax.swing.JFrame {
         menu2.setLocation(30, 80);
         menu2.setVisible(false);
         menu1.setBackground(Color.decode("#ffffff"));
+        toolbar_menu.setVisible(false);
+        tb_lock_toogle.setIcon(lock_toogle);
 //        background.getComponent(0).setForeground(Color.yellow);
 //        getContentPane().setForeground(Color.yellow);
     }
@@ -90,6 +94,9 @@ public class MainMenu extends javax.swing.JFrame {
         m1o1Shortcut.setForeground(Color.decode("#ffffff"));
         menu2.setForeground(Color.decode("#ffffff"));
         //Menu Options
+        //toolbar
+        toolbar_menu.setBackground(Color.decode("#4C4C61"));
+        Toolbar_open.setForeground(Color.decode("#ffffff"));
     }
     void lightTheme(){
         bg = new ImageIcon(getClass().getResource("/Src/Form/Netbean W Form.jpg"));
@@ -111,6 +118,9 @@ public class MainMenu extends javax.swing.JFrame {
         m1o1Shortcut.setForeground(Color.decode("#0"));
         menu2.setForeground(Color.decode("#0"));
         //Menu Options
+        //toolbar
+        toolbar_menu.setBackground(Color.decode("#ffffff"));
+        Toolbar_open.setForeground(Color.decode("#0"));
     }
 
     
@@ -131,11 +141,20 @@ public class MainMenu extends javax.swing.JFrame {
         m1o1Shortcut = new javax.swing.JLabel();
         menu2 = new javax.swing.JPanel();
         content = new javax.swing.JPanel();
+        toolbar_menu = new javax.swing.JPanel();
+        tb_lock_toogle = new javax.swing.JLabel();
+        toolbar_button = new javax.swing.JToolBar();
+        Toolbar_open = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Src/Images/Logo/Logo.png")).getImage());
         setUndecorated(true);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         minimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -148,9 +167,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         switch_Theme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         switch_Theme.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                switch_ThemeMousePressed(evt);
-            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 switch_ThemeMouseReleased(evt);
             }
@@ -164,9 +180,6 @@ public class MainMenu extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 closeMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                closeMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 closeMouseReleased(evt);
@@ -182,6 +195,9 @@ public class MainMenu extends javax.swing.JFrame {
         drag.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 dragMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                dragMouseReleased(evt);
             }
         });
         getContentPane().add(drag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 50));
@@ -271,7 +287,59 @@ public class MainMenu extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        getContentPane().add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1000, 620));
+        getContentPane().add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1000, 540));
+
+        toolbar_menu.setBackground(new java.awt.Color(255, 255, 255));
+        toolbar_menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                toolbar_menuMouseExited(evt);
+            }
+        });
+
+        tb_lock_toogle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Src/Images/Icons/unlock.png"))); // NOI18N
+        tb_lock_toogle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tb_lock_toogleMouseEntered(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tb_lock_toogleMouseReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout toolbar_menuLayout = new javax.swing.GroupLayout(toolbar_menu);
+        toolbar_menu.setLayout(toolbar_menuLayout);
+        toolbar_menuLayout.setHorizontalGroup(
+            toolbar_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, toolbar_menuLayout.createSequentialGroup()
+                .addContainerGap(930, Short.MAX_VALUE)
+                .addComponent(tb_lock_toogle, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        toolbar_menuLayout.setVerticalGroup(
+            toolbar_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, toolbar_menuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tb_lock_toogle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(toolbar_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1000, 80));
+
+        toolbar_button.setFloatable(false);
+        toolbar_button.setRollover(true);
+
+        Toolbar_open.setText("Toolbar |V|");
+        Toolbar_open.setFocusable(false);
+        Toolbar_open.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Toolbar_open.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Toolbar_open.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Toolbar_openActionPerformed(evt);
+            }
+        });
+        toolbar_button.add(Toolbar_open);
+
+        getContentPane().add(toolbar_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1000, 20));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Src/Form/Netbean W Form.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -311,10 +379,6 @@ public class MainMenu extends javax.swing.JFrame {
         exit();
     }//GEN-LAST:event_closeMouseReleased
 
-    private void closeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_closeMousePressed
-
     private void switch_ThemeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_switch_ThemeMouseReleased
         // TODO add your handling code here:
         closeMenuBar();
@@ -324,10 +388,6 @@ public class MainMenu extends javax.swing.JFrame {
             lightTheme();
         }
     }//GEN-LAST:event_switch_ThemeMouseReleased
-
-    private void switch_ThemeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_switch_ThemeMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_switch_ThemeMousePressed
 
     private void minimizeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseReleased
         // TODO add your handling code here:
@@ -369,6 +429,47 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         closeMenuBar();
     }//GEN-LAST:event_contentMouseReleased
+
+    private void Toolbar_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Toolbar_openActionPerformed
+        // TODO add your handling code here:
+        toolbar_menu.setVisible(true);
+    }//GEN-LAST:event_Toolbar_openActionPerformed
+
+    private void toolbar_menuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toolbar_menuMouseExited
+        // TODO add your handling code here:
+        if (toolbar_lock == "false") {
+            toolbar_menu.setVisible(false);
+        }
+    }//GEN-LAST:event_toolbar_menuMouseExited
+
+    private void tb_lock_toogleMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_lock_toogleMouseReleased
+        // TODO add your handling code here:
+        if (toolbar_lock == "true") {
+            lock_toogle = new ImageIcon(getClass().getResource("/Src/Images/Icons/unlock.png"));
+            toolbar_lock = "false";
+            tb_lock_toogle.setIcon(lock_toogle);
+//            content.setSize(content.getSize().width, content.getSize().height+toolbar_menu.getSize().height);
+        }else{
+            lock_toogle = new ImageIcon(getClass().getResource("/Src/Images/Icons/lock.png"));
+            toolbar_lock = "true";
+            tb_lock_toogle.setIcon(lock_toogle);
+        }
+    }//GEN-LAST:event_tb_lock_toogleMouseReleased
+
+    private void tb_lock_toogleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_lock_toogleMouseEntered
+        // TODO add your handling code here:
+        toolbar_menu.setVisible(true);
+    }//GEN-LAST:event_tb_lock_toogleMouseEntered
+
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        // TODO add your handling code here:
+        closeMenuBar();
+    }//GEN-LAST:event_formMouseReleased
+
+    private void dragMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dragMouseReleased
+        // TODO add your handling code here:
+        closeMenuBar();
+    }//GEN-LAST:event_dragMouseReleased
 
     /**
      * @param args the command line arguments
@@ -413,6 +514,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Toolbar_open;
     private javax.swing.JLabel background;
     private javax.swing.JLabel close;
     private javax.swing.JPanel content;
@@ -427,5 +529,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JToolBar menubar;
     private javax.swing.JLabel minimize;
     private javax.swing.JLabel switch_Theme;
+    private javax.swing.JLabel tb_lock_toogle;
+    private javax.swing.JToolBar toolbar_button;
+    private javax.swing.JPanel toolbar_menu;
     // End of variables declaration//GEN-END:variables
 }
