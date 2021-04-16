@@ -44,11 +44,11 @@ public class MainMenu extends javax.swing.JFrame {
      */
     void load_Layout(){
         background.setIcon(bg);
-        close.setLocation(940, 10);
+        close.setLocation(940, 5);
         close.setSize(50, 50);
-        minimize.setLocation(830, 10);
+        minimize.setLocation(830, 5);
         minimize.setSize(50, 50);
-        switch_Theme.setLocation(720, 10);
+        switch_Theme.setLocation(720, 5);
         switch_Theme.setLocation(50, 50);
         drag.setLocation(0, 0);
         drag.setSize(1000, 50);
@@ -75,12 +75,42 @@ public class MainMenu extends javax.swing.JFrame {
         background.setIcon(bg);
         background_toogle = "black";
         content.setBackground(Color.decode("#5D686E"));
+        menu_file.setForeground(Color.white);
+        menu_edit.setForeground(Color.white);
+        //MenuBar Background Color
+        menu1.setBackground(Color.decode("#2C3846"));
+        //Menu Options
+        menu1Option1.setBackground(Color.decode("#2C3846"));
+        menu2.setBackground(Color.decode("#2C3846"));
+        //Menu Options
+        //MenuBar Font Color
+        menu1.setForeground(Color.decode("#ffffff"));
+        //Menu Options
+        m1o1Text.setForeground(Color.decode("#ffffff"));
+        m1o1Shortcut.setForeground(Color.decode("#ffffff"));
+        menu2.setForeground(Color.decode("#ffffff"));
+        //Menu Options
     }
     void lightTheme(){
         bg = new ImageIcon(getClass().getResource("/Src/Form/Netbean W Form.jpg"));
         background.setIcon(bg);
         background_toogle = "white";
         content.setBackground(Color.decode("#ffffff"));
+        menu_file.setForeground(Color.black);
+        menu_edit.setForeground(Color.black);
+        //MenuBar Background Color
+        menu1.setBackground(Color.decode("#ffffff"));
+        //Menu Options
+        menu1Option1.setBackground(Color.decode("#ffffff"));
+        menu2.setBackground(Color.decode("#ffffff"));
+        //Menu Options
+        //MenuBar Font Color
+        menu1.setForeground(Color.decode("#0"));
+        //Menu options
+        m1o1Text.setForeground(Color.decode("#0"));
+        m1o1Shortcut.setForeground(Color.decode("#0"));
+        menu2.setForeground(Color.decode("#0"));
+        //Menu Options
     }
 
     
@@ -96,9 +126,9 @@ public class MainMenu extends javax.swing.JFrame {
         menu_file = new javax.swing.JButton();
         menu_edit = new javax.swing.JButton();
         menu1 = new javax.swing.JPanel();
-        menuOption1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        menu1Option1 = new javax.swing.JPanel();
+        m1o1Text = new javax.swing.JLabel();
+        m1o1Shortcut = new javax.swing.JLabel();
         menu2 = new javax.swing.JPanel();
         content = new javax.swing.JPanel();
         background = new javax.swing.JLabel();
@@ -108,13 +138,15 @@ public class MainMenu extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        minimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         minimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 minimizeMouseReleased(evt);
             }
         });
-        getContentPane().add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, 50, 40));
+        getContentPane().add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 5, 50, 50));
 
+        switch_Theme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         switch_Theme.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 switch_ThemeMousePressed(evt);
@@ -123,9 +155,16 @@ public class MainMenu extends javax.swing.JFrame {
                 switch_ThemeMouseReleased(evt);
             }
         });
-        getContentPane().add(switch_Theme, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 50, 50));
+        getContentPane().add(switch_Theme, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 5, 50, 50));
 
+        close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                closeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                closeMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 closeMousePressed(evt);
             }
@@ -133,7 +172,7 @@ public class MainMenu extends javax.swing.JFrame {
                 closeMouseReleased(evt);
             }
         });
-        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 50, 40));
+        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 5, 50, 50));
 
         drag.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -180,32 +219,32 @@ public class MainMenu extends javax.swing.JFrame {
         menu1.setBackground(new java.awt.Color(255, 255, 255));
         menu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        menuOption1.setBackground(new java.awt.Color(255, 255, 255));
-        menuOption1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        menuOption1.addMouseListener(new java.awt.event.MouseAdapter() {
+        menu1Option1.setBackground(new java.awt.Color(255, 255, 255));
+        menu1Option1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        menu1Option1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                menuOption1MouseReleased(evt);
+                menu1Option1MouseReleased(evt);
             }
         });
-        menuOption1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menu1Option1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Exit");
-        menuOption1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        m1o1Text.setText("Exit");
+        menu1Option1.add(m1o1Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel2.setText("alt+f4");
-        menuOption1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+        m1o1Shortcut.setText("alt+f4");
+        menu1Option1.add(m1o1Shortcut, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
         javax.swing.GroupLayout menu1Layout = new javax.swing.GroupLayout(menu1);
         menu1.setLayout(menu1Layout);
         menu1Layout.setHorizontalGroup(
             menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuOption1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menu1Option1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menu1Layout.setVerticalGroup(
             menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu1Layout.createSequentialGroup()
-                .addComponent(menuOption1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 107, Short.MAX_VALUE))
+                .addComponent(menu1Option1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getContentPane().add(menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 130, 140));
@@ -215,16 +254,21 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().add(menu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 130, 140));
 
         content.setBackground(new java.awt.Color(255, 255, 255));
+        content.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                contentMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         getContentPane().add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1000, 620));
@@ -287,6 +331,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void minimizeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseReleased
         // TODO add your handling code here:
+        closeMenuBar();
         this.setExtendedState(MainMenu.ICONIFIED);
     }//GEN-LAST:event_minimizeMouseReleased
 
@@ -304,10 +349,26 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menu_editActionPerformed
 
-    private void menuOption1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuOption1MouseReleased
+    private void menu1Option1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1Option1MouseReleased
         // TODO add your handling code here:
         exit();
-    }//GEN-LAST:event_menuOption1MouseReleased
+    }//GEN-LAST:event_menu1Option1MouseReleased
+
+    private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
+        // TODO add your handling code here:
+        ImageIcon closeHover = new ImageIcon(getClass().getResource("/Src/Images/Icons/close.png"));
+        close.setIcon(closeHover);
+    }//GEN-LAST:event_closeMouseEntered
+
+    private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
+        // TODO add your handling code here:
+        close.setIcon(null);
+    }//GEN-LAST:event_closeMouseExited
+
+    private void contentMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contentMouseReleased
+        // TODO add your handling code here:
+        closeMenuBar();
+    }//GEN-LAST:event_contentMouseReleased
 
     /**
      * @param args the command line arguments
@@ -356,11 +417,11 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel close;
     private javax.swing.JPanel content;
     private javax.swing.JLabel drag;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel m1o1Shortcut;
+    private javax.swing.JLabel m1o1Text;
     private javax.swing.JPanel menu1;
+    private javax.swing.JPanel menu1Option1;
     private javax.swing.JPanel menu2;
-    private javax.swing.JPanel menuOption1;
     private javax.swing.JButton menu_edit;
     private javax.swing.JButton menu_file;
     private javax.swing.JToolBar menubar;
